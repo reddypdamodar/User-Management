@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link href="/css/info.css" rel="stylesheet" type="text/css" />
+  </head>
+  <body style="background-image: url(images/bg.jpg)" class="center">
+    <h2 class="whitetext">User Information</h2>
+
+    <table>
+      <tr>
+        <th>Details</th>
+        <th>Info.</th>
+      </tr>
+      <tr>
+        <td>Name</td>
+        <td><%- doc.name %></td>
+      </tr>
+      <tr>
+        <td>username</td>
+        <td><%- doc.username %></td>
+      </tr>
+      <tr>
+        <td>email</td>
+        <td><%- doc.email %></td>
+      </tr>
+      <tr>
+        <td>phone</td>
+        <td><%- doc.phone %></td>
+      </tr>
+      <tr>
+        <td>collegeName</td>
+        <td><%- doc.collegeName %></td>
+      </tr>
+      <tr>
+        <td>gender</td>
+        <td><%- doc.gender %></td>
+      </tr>
+    </table>
+    <br /><br />
+
+    <form class="align" action="/" method="get">
+      <button type="submit" class="btn btn-light button">Log in page</button>
+    </form>
+    <br />
+    <form class="align" action="/download" method="get">
+      <button class="btn btn-light button">Download data!</button>
+    </form>
+  </body>
+</html>

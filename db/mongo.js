@@ -1,0 +1,20 @@
+let mongoose = require("mongoose");
+
+// Connecting to database
+const db = mongoose.createConnection("mongodb://localhost/user", {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+});
+
+// Schema
+const formSchema = new mongoose.Schema({
+  name: { type: String, required: true },
+  username: { type: String, required: true },
+  email: { type: String, required: true },
+  phone: { type: String, required: true },
+  password: { type: String, required: true },
+  collegeName: { type: String, required: true },
+  gender: { type: String, required: true, enum: ["male", "female"] },
+});
+const formCollection = db.model("Form", formSchema);
+module.exports = { db, formCollection };

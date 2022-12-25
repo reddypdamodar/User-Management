@@ -1,0 +1,80 @@
+let { findByUsername, createRecord } = require("../models/form");
+const { Excel } = require("../models/inf");
+
+async function check(req, res) {
+  try {
+    let username = req.body.username;
+    let password = req.body.password;
+
+    const userData = await findByUsername(username);
+    if (!userData) {
+      return res.render("error", { m: "Invalid username" });
+    } else if (userData.password !== password) {
+      return res.render("error", { m: "Invalid credentials" });
+    }
+    Excel(userData);
+    res.render("info", { doc: userData });
+  } catch (e) {
+    res.status(500).send("server Error");
+  }
+}
+async function pushdata(req, res) {
+  try {
+    let name = req.body.name;
+    let username = req.body.username;
+    let email = req.body.email;
+    let phone = req.body.phone;
+    let password = req.body.password;
+    let collegeName = req.body.collegeName;
+    let gender = req.body.gender;
+
+    let formdata = {
+      name,
+      username,
+      email,
+      phone,
+      password,
+      collegeName,
+      gender,
+    };
+    await createRecord(formdata);
+
+    res.redirect("/result");
+  } catch (e) {
+    res.status(500).send("server Error");
+  }
+}
+function excel(req, res) {
+  const reqPath = path.join(__dirname, "../", "studentsData.xlsx");
+  const file = `${__dirname}/./studentsData.xlsx`;
+  res.download(reqPath); // Set disposition and send it.
+  //res.send(__dirname);
+}
+function login(req, res) {
+  res.render("login");
+}
+const result = (req, res) => {
+  res.render("result");
+};
+function form(req, res) {
+  res.render("../views/form");
+}
+const resultRedirect = (req, res) => {
+  res.redirect("/");
+};
+const excelRedirect = (req, res) => {
+  res.redirect("/");
+};
+// (req, res) => {
+//   res.redirect("/");
+// }
+module.exports = {
+  check,
+  pushdata,
+  excel,
+  login,
+  result,
+  form,
+  resultRedirect,
+  excelRedirect,
+};

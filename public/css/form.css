@@ -1,0 +1,31 @@
+*{
+    color: white;
+  }
+  .love{
+    align-self: start;
+  }
+  .center {
+margin: auto;
+width: 50%;
+
+padding: 10px;
+}
+.margin{
+    border: 3px solid white;
+    width: 50%;
+    margin-top: 2rem;
+}
+.middle{
+  margin: auto;
+ 
+}
+.align{
+  align-items: center; 
+  text-align: center;
+}
+.button{
+  color: #ed969e;
+}
+.form-width{
+width:50%
+}

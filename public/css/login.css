@@ -1,0 +1,27 @@
+
+
+*{
+    color: white;
+  }
+  .love{
+    align-self: start;
+  }
+  .center {
+
+margin: auto;
+margin-top: 5rem;
+width: 50%;
+border: 3px solid white;
+padding: 10px;
+}
+.middle{
+  margin: auto;
+ 
+}
+.align{
+  align-items: center; 
+  text-align: center;
+}
+.button{
+  color: #ed969e;
+}

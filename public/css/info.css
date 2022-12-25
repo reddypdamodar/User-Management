@@ -1,0 +1,52 @@
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+  }
+
+  td,
+  th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+  }
+  tr:nth-child(odd) {
+    background-color: #dcd9d9;
+  }
+
+  tr:nth-child(even) {
+    background-color: #e99e9e;
+  }
+  *{
+    color: black;
+  }
+  .whitetext{
+color:white;
+  }
+  .love{
+    align-self: start;
+  }
+  .center {
+margin: auto;
+width: 50%;
+
+padding: 10px;
+}
+.margin{
+    border: 3px solid white;
+    width: 50%;
+}
+.middle{
+  margin: auto;
+ 
+}
+.align{
+  align-items: center; 
+  text-align: center;
+}
+.button{
+  color: #ed969e;
+}
+.form-width{
+width:50%
+}
