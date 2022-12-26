@@ -1,5 +1,8 @@
 let { findByUsername, createRecord } = require("../models/form");
 const { Excel } = require("../models/inf");
+//bcrypt
+const bcrypt = require("bcrypt");
+const saltRounds = 10;
 
 async function check(req, res) {
   try {
@@ -9,40 +12,47 @@ async function check(req, res) {
     const userData = await findByUsername(username);
     if (!userData) {
       return res.render("error", { m: "Invalid username" });
-    } else if (userData.password !== password) {
-      return res.render("error", { m: "Invalid credentials" });
     }
-    Excel(userData);
-    res.render("info", { doc: userData });
+    const hash = userData.password;
+    bcrypt.compare(password, hash, function (err, result) {
+      if (result == true) {
+        Excel(userData);
+        res.render("info", { doc: userData });
+      } else {
+        return res.render("error", { m: "Invalid credentials" });
+      }
+    });
   } catch (e) {
     res.status(500).send("server Error");
   }
 }
 async function pushdata(req, res) {
-  try {
-    let name = req.body.name;
-    let username = req.body.username;
-    let email = req.body.email;
-    let phone = req.body.phone;
-    let password = req.body.password;
-    let collegeName = req.body.collegeName;
-    let gender = req.body.gender;
+  bcrypt.hash(req.body.password, saltRounds, async function (err, hash) {
+    try {
+      let name = req.body.name;
+      let username = req.body.username;
+      let email = req.body.email;
+      let phone = req.body.phone;
+      let password = hash;
+      let collegeName = req.body.collegeName;
+      let gender = req.body.gender;
 
-    let formdata = {
-      name,
-      username,
-      email,
-      phone,
-      password,
-      collegeName,
-      gender,
-    };
-    await createRecord(formdata);
+      let formdata = {
+        name,
+        username,
+        email,
+        phone,
+        password,
+        collegeName,
+        gender,
+      };
+      await createRecord(formdata);
 
-    res.redirect("/result");
-  } catch (e) {
-    res.status(500).send("server Error");
-  }
+      res.redirect("/result");
+    } catch (e) {
+      res.status(500).send("server Error");
+    }
+  });
 }
 function excel(req, res) {
   const reqPath = path.join(__dirname, "../", "studentsData.xlsx");
