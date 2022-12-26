@@ -66,16 +66,27 @@
         />
       </div>
       <div class="mb-3">
-        <label for="exampleFormControlInput1" class="form-label"
+        <label for="position" class="form-label"><b>Select position</b></label>
+
+        <select name="position" id="position" class="form-control">
+          <option value="" disabled selected>Select position</option>
+          <option value="Manager" class="button">Manager</option>
+          <option value="Lead" class="button">Lead</option>
+          <option value="Developer" class="button">Developer</option>
+          <option value="Trainee" class="button">Trainee</option>
+        </select>
+        <!-- <label for="exampleFormControlInput1" class="form-label"
           ><b>Position</b></label
         >
-        <input
-          type="text"
+        <select     
           name="position"
           required
           class="form-control"
-          placeholder="enter position"
-        />
+          placeholder="select position"
+        /> <option value="manager">Manager</option>
+        <option value="lead">Lead</option>
+        <option value="developer">Developer</option>
+        <option value="trainee">Trainee</option> </select> -->
       </div>
       <div class="mb-3">
         <label for="exampleFormControlInput1" class="form-label"

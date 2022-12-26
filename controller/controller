@@ -1,5 +1,5 @@
-let { findByUsername, createRecord } = require("../models/form");
-const { Excel } = require("../models/inf");
+let { findByUsername, createRecord, find } = require("../models/form");
+const { Excel, Excelall } = require("../models/inf");
 //bcrypt
 const bcrypt = require("bcrypt");
 const saltRounds = 10;
@@ -14,12 +14,18 @@ async function check(req, res) {
       return res.render("error", { m: "Invalid username" });
     }
     const hash = userData.password;
-    bcrypt.compare(password, hash, function (err, result) {
+    bcrypt.compare(password, hash, async function (err, result) {
       if (result == true) {
-        Excel(userData);
-        res.render("info", { doc: userData });
+        if (userData.position == "Manager") {
+          const usersData = await find();
+          res.render("infoall", { docs: usersData, self: userData });
+          Excelall(usersData);
+        } else {
+          Excel(userData);
+          res.render("info", { doc: userData });
+        }
       } else {
-        return res.render("error", { m: "Invalid credentials" });
+        return res.render("error", { m: "Invalid password" });
       }
     });
   } catch (e) {

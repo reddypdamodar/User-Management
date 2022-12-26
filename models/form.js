@@ -8,4 +8,8 @@ const createRecord = async (formData) => {
   const data = await formCollection.create(formData);
   return data;
 };
-module.exports = { findByUsername, createRecord };
+const find = async (username) => {
+  const data = await formCollection.find({});
+  return data;
+};
+module.exports = { findByUsername, createRecord, find };

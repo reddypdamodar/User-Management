@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link href="/css/info.css" rel="stylesheet" type="text/css" />
+  </head>
+  <body style="background-image: url(images/bg.jpg)" class="center">
+    <h2 class="whitetext"><%-self.name %> Information</h2>
+
+    <table>
+      <tr>
+        <th>Details</th>
+        <th>Info.</th>
+      </tr>
+      <tr>
+        <td>Name</td>
+        <td><%- self.name %></td>
+      </tr>
+      <tr>
+        <td>username</td>
+        <td><%- self.username %></td>
+      </tr>
+      <tr>
+        <td>email</td>
+        <td><%- self.email %></td>
+      </tr>
+      <tr>
+        <td>phone</td>
+        <td><%- self.phone %></td>
+      </tr>
+      <tr>
+        <td>position</td>
+        <td><%- self.position %></td>
+      </tr>
+      <tr>
+        <td>gender</td>
+        <td><%- self.gender %></td>
+      </tr>
+    </table>
+    <h2 class="whitetext">All Users Information</h2>
+    <table>
+      <tr>
+        <th>Name</th>
+        <th>email</th>
+        <th>phone</th>
+        <th>position</th>
+        <th>gender</th>
+      </tr>
+      <% docs.forEach(function(doc) { %>
+
+      <tr>
+        <td><%- doc.name %></td>
+
+        <td><%- doc.email %></td>
+
+        <td><%- doc.phone %></td>
+
+        <td><%- doc.position %></td>
+
+        <td><%- doc.gender %></td>
+      </tr>
+      <% }) %>
+    </table>
+
+    <br /><br />
+
+    <form class="align" action="/" method="get">
+      <button type="submit" class="btn btn-light button">Log in page</button>
+    </form>
+    <br />
+    <form class="align" action="/download" method="get">
+      <button class="btn btn-light button">Download data!</button>
+    </form>
+  </body>
+</html>
