@@ -8,7 +8,7 @@ function Excel(doc) {
       email: doc.email,
       phone: doc.phone,
       password: doc.password,
-      collegeName: doc.collegeName,
+      position: doc.position,
       gender: doc.gender,
     },
   ];

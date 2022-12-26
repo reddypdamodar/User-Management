@@ -34,7 +34,7 @@ async function pushdata(req, res) {
       let email = req.body.email;
       let phone = req.body.phone;
       let password = hash;
-      let collegeName = req.body.collegeName;
+      let position = req.body.position;
       let gender = req.body.gender;
 
       let formdata = {
@@ -43,7 +43,7 @@ async function pushdata(req, res) {
         email,
         phone,
         password,
-        collegeName,
+        position,
         gender,
       };
       await createRecord(formdata);
