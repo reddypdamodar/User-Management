@@ -13,6 +13,8 @@ const {
   form,
   resultRedirect,
   excelRedirect,
+  update,
+  newdata,
 } = require("../controller/controller");
 
 router.get("/form", form);
@@ -31,5 +33,7 @@ router.post("/excel", excelRedirect);
 router.post("/info", check);
 //creating form
 router.post("/", pushdata);
+router.post("/update", update);
+router.post("/newdata", newdata);
 
 module.exports = router;

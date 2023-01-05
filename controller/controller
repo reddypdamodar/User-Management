@@ -1,4 +1,9 @@
-let { findByUsername, createRecord, find } = require("../models/form");
+let {
+  findByUsername,
+  createRecord,
+  find,
+  updatenew,
+} = require("../models/form");
 const { Excel, Excelall } = require("../models/inf");
 //bcrypt
 const bcrypt = require("bcrypt");
@@ -84,6 +89,21 @@ const excelRedirect = (req, res) => {
 // (req, res) => {
 //   res.redirect("/");
 // }
+const update = (req, res) => {
+  const username = req.body.username;
+  res.render("update", { username: username });
+};
+const newdata = async (req, res) => {
+  try {
+    const email = req.body.newemail;
+    const phone = req.body.newnumber;
+    const username = req.body.username;
+    await updatenew(username, phone, email);
+    res.redirect("/result");
+  } catch (e) {
+    res.status(500).send("error");
+  }
+};
 module.exports = {
   check,
   pushdata,
@@ -93,4 +113,6 @@ module.exports = {
   form,
   resultRedirect,
   excelRedirect,
+  update,
+  newdata,
 };

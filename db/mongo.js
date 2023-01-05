@@ -1,10 +1,13 @@
 let mongoose = require("mongoose");
 
 // Connecting to database
-const db = mongoose.createConnection("mongodb://localhost/user", {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-});
+const db = mongoose.createConnection(
+  "mongodb+srv://reddypdamodar:test123@cluster0.w4sino7.mongodb.net/user",
+  {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  }
+);
 
 // Schema
 const formSchema = new mongoose.Schema({
